@@ -1,4 +1,4 @@
-# Quanrum UAV Yer İstasyonu Arayüzü
+# Quantum UAV Yer İstasyonu Arayüzü
 
 PySide6 tabanlı İHA yer kontrol istasyonu arayüzü. Yarışma sırasında telemetri izleme, canlı harita, kamera akışı ve sistem konfigürasyonu sağlar.
 
