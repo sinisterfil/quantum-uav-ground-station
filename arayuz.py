@@ -200,140 +200,144 @@ class Ui_QuanrumUAVArayz(object):
         self.cfg_title.setStyleSheet("color: #ff8800; font-size: 13px; font-weight: bold; background: transparent;")
 
         # ── 1) BAĞLANTI AYARLARI ─────────────────────────────
+        LW = 500   # sol sütun genişliği
+        RW = 505   # sağ sütun genişliği
+        RX = 510   # sağ sütun x
+
         self.cfg_conn_frame = QFrame(self.tab_settings)
-        self.cfg_conn_frame.setGeometry(QRect(3, 28, 335, 230))
+        self.cfg_conn_frame.setGeometry(QRect(5, 28, LW, 245))
         self.cfg_conn_frame.setStyleSheet(panel_ss)
 
         lbl_conn = QLabel(self.cfg_conn_frame)
-        lbl_conn.setGeometry(QRect(8, 4, 200, 18))
+        lbl_conn.setGeometry(QRect(10, 6, 300, 20))
         lbl_conn.setText("BAĞLANTI AYARLARI")
         lbl_conn.setStyleSheet(hdr_ss)
 
         # Serial Port
         lbl_serial = QLabel(self.cfg_conn_frame)
-        lbl_serial.setGeometry(QRect(10, 30, 120, 16))
+        lbl_serial.setGeometry(QRect(12, 34, 140, 18))
         lbl_serial.setText("Serial Port:")
         lbl_serial.setStyleSheet(lbl_ss)
 
         self.cfg_serial_combo = QComboBox(self.cfg_conn_frame)
-        self.cfg_serial_combo.setGeometry(QRect(10, 48, 200, 26))
+        self.cfg_serial_combo.setGeometry(QRect(12, 54, 300, 28))
         self.cfg_serial_combo.setStyleSheet(input_ss)
         self.cfg_serial_combo.addItems(["/dev/ttyUSB0", "/dev/ttyACM0", "COM3", "COM4"])
         self.cfg_serial_combo.setEditable(True)
 
         self.cfg_serial_refresh = QPushButton(self.cfg_conn_frame)
-        self.cfg_serial_refresh.setGeometry(QRect(215, 48, 60, 26))
+        self.cfg_serial_refresh.setGeometry(QRect(320, 54, 80, 28))
         self.cfg_serial_refresh.setText("Tara")
         self.cfg_serial_refresh.setStyleSheet(btn_ss)
 
         self.cfg_baud_combo = QComboBox(self.cfg_conn_frame)
-        self.cfg_baud_combo.setGeometry(QRect(280, 48, 45, 26))
-        self.cfg_baud_combo.setStyleSheet(input_ss + "\nQComboBox { font-size: 9px; }")
+        self.cfg_baud_combo.setGeometry(QRect(408, 54, 80, 28))
+        self.cfg_baud_combo.setStyleSheet(input_ss + "\nQComboBox { font-size: 10px; }")
         self.cfg_baud_combo.addItems(["57600", "115200", "921600"])
         self.cfg_baud_combo.setCurrentIndex(1)
 
         # Sunucu IP / Port
         lbl_server = QLabel(self.cfg_conn_frame)
-        lbl_server.setGeometry(QRect(10, 82, 120, 16))
+        lbl_server.setGeometry(QRect(12, 92, 140, 18))
         lbl_server.setText("Sunucu IP:")
         lbl_server.setStyleSheet(lbl_ss)
 
         self.cfg_server_ip = QLineEdit(self.cfg_conn_frame)
-        self.cfg_server_ip.setGeometry(QRect(10, 100, 200, 26))
+        self.cfg_server_ip.setGeometry(QRect(12, 112, 300, 28))
         self.cfg_server_ip.setStyleSheet(input_ss)
         self.cfg_server_ip.setPlaceholderText("192.168.1.100")
 
         lbl_port = QLabel(self.cfg_conn_frame)
-        lbl_port.setGeometry(QRect(220, 82, 60, 16))
+        lbl_port.setGeometry(QRect(320, 92, 80, 18))
         lbl_port.setText("Port:")
         lbl_port.setStyleSheet(lbl_ss)
 
         self.cfg_server_port = QSpinBox(self.cfg_conn_frame)
-        self.cfg_server_port.setGeometry(QRect(220, 100, 100, 26))
+        self.cfg_server_port.setGeometry(QRect(320, 112, 168, 28))
         self.cfg_server_port.setStyleSheet(input_ss)
         self.cfg_server_port.setRange(1, 65535)
         self.cfg_server_port.setValue(8000)
 
         # Takım ID / Şifre
         lbl_team = QLabel(self.cfg_conn_frame)
-        lbl_team.setGeometry(QRect(10, 134, 120, 16))
+        lbl_team.setGeometry(QRect(12, 150, 140, 18))
         lbl_team.setText("Takım ID:")
         lbl_team.setStyleSheet(lbl_ss)
 
         self.cfg_team_id = QLineEdit(self.cfg_conn_frame)
-        self.cfg_team_id.setGeometry(QRect(10, 152, 140, 26))
+        self.cfg_team_id.setGeometry(QRect(12, 170, 220, 28))
         self.cfg_team_id.setStyleSheet(input_ss)
         self.cfg_team_id.setPlaceholderText("T001")
 
         lbl_pass = QLabel(self.cfg_conn_frame)
-        lbl_pass.setGeometry(QRect(160, 134, 120, 16))
+        lbl_pass.setGeometry(QRect(248, 150, 140, 18))
         lbl_pass.setText("Şifre:")
         lbl_pass.setStyleSheet(lbl_ss)
 
         self.cfg_team_pass = QLineEdit(self.cfg_conn_frame)
-        self.cfg_team_pass.setGeometry(QRect(160, 152, 160, 26))
+        self.cfg_team_pass.setGeometry(QRect(248, 170, 240, 28))
         self.cfg_team_pass.setStyleSheet(input_ss)
         self.cfg_team_pass.setEchoMode(QLineEdit.EchoMode.Password)
         self.cfg_team_pass.setPlaceholderText("••••••")
 
         # Bağlantı kaydet butonu
         self.cfg_conn_save = QPushButton(self.cfg_conn_frame)
-        self.cfg_conn_save.setGeometry(QRect(10, 190, 140, 30))
+        self.cfg_conn_save.setGeometry(QRect(12, 208, 180, 30))
         self.cfg_conn_save.setText("Kaydet & Uygula")
         self.cfg_conn_save.setStyleSheet(save_btn_ss)
 
         self.cfg_conn_status = QLabel(self.cfg_conn_frame)
-        self.cfg_conn_status.setGeometry(QRect(160, 195, 160, 20))
+        self.cfg_conn_status.setGeometry(QRect(200, 212, 200, 22))
         self.cfg_conn_status.setText("")
         self.cfg_conn_status.setStyleSheet("color: #888; font-size: 10px; background: transparent;")
 
         # ── 2) HSS MANUEL GİRİŞ ──────────────────────────────
         self.cfg_hss_frame = QFrame(self.tab_settings)
-        self.cfg_hss_frame.setGeometry(QRect(3, 262, 335, 226))
+        self.cfg_hss_frame.setGeometry(QRect(5, 277, LW, 240))
         self.cfg_hss_frame.setStyleSheet(panel_ss)
 
         lbl_hss = QLabel(self.cfg_hss_frame)
-        lbl_hss.setGeometry(QRect(8, 4, 280, 18))
+        lbl_hss.setGeometry(QRect(10, 6, 400, 20))
         lbl_hss.setText("HSS MANUEL GİRİŞ (Hakem Koordinatları)")
         lbl_hss.setStyleSheet(hdr_ss)
 
         # HSS giriş alanları (3 adet HSS bölgesi)
         self.cfg_hss_entries = []
         for i in range(3):
-            y = 28 + i * 54
+            y = 32 + i * 58
 
             lbl = QLabel(self.cfg_hss_frame)
-            lbl.setGeometry(QRect(10, y, 80, 16))
+            lbl.setGeometry(QRect(12, y, 80, 18))
             lbl.setText(f"HSS {i+1}:")
             lbl.setStyleSheet(lbl_ss)
 
             lbl_lat = QLabel(self.cfg_hss_frame)
-            lbl_lat.setGeometry(QRect(70, y, 30, 16))
+            lbl_lat.setGeometry(QRect(80, y, 40, 18))
             lbl_lat.setText("Lat:")
             lbl_lat.setStyleSheet(lbl_ss)
 
             lat = QLineEdit(self.cfg_hss_frame)
-            lat.setGeometry(QRect(10, y + 18, 100, 24))
+            lat.setGeometry(QRect(12, y + 20, 155, 28))
             lat.setStyleSheet(input_ss)
             lat.setPlaceholderText("38.xxxx")
 
             lbl_lon = QLabel(self.cfg_hss_frame)
-            lbl_lon.setGeometry(QRect(120, y, 30, 16))
+            lbl_lon.setGeometry(QRect(178, y, 40, 18))
             lbl_lon.setText("Lon:")
             lbl_lon.setStyleSheet(lbl_ss)
 
             lon = QLineEdit(self.cfg_hss_frame)
-            lon.setGeometry(QRect(115, y + 18, 100, 24))
+            lon.setGeometry(QRect(175, y + 20, 155, 28))
             lon.setStyleSheet(input_ss)
             lon.setPlaceholderText("35.xxxx")
 
             lbl_r = QLabel(self.cfg_hss_frame)
-            lbl_r.setGeometry(QRect(225, y, 50, 16))
+            lbl_r.setGeometry(QRect(342, y, 60, 18))
             lbl_r.setText("R (m):")
             lbl_r.setStyleSheet(lbl_ss)
 
             radius = QSpinBox(self.cfg_hss_frame)
-            radius.setGeometry(QRect(220, y + 18, 70, 24))
+            radius.setGeometry(QRect(338, y + 20, 100, 28))
             radius.setStyleSheet(input_ss)
             radius.setRange(1, 500)
             radius.setValue(50)
@@ -341,28 +345,28 @@ class Ui_QuanrumUAVArayz(object):
             self.cfg_hss_entries.append({"lat": lat, "lon": lon, "radius": radius})
 
         self.cfg_hss_apply = QPushButton(self.cfg_hss_frame)
-        self.cfg_hss_apply.setGeometry(QRect(10, 192, 140, 28))
+        self.cfg_hss_apply.setGeometry(QRect(12, 206, 180, 28))
         self.cfg_hss_apply.setText("Haritaya Uygula")
         self.cfg_hss_apply.setStyleSheet(save_btn_ss)
 
         self.cfg_hss_clear = QPushButton(self.cfg_hss_frame)
-        self.cfg_hss_clear.setGeometry(QRect(160, 192, 100, 28))
+        self.cfg_hss_clear.setGeometry(QRect(200, 206, 120, 28))
         self.cfg_hss_clear.setText("Temizle")
         self.cfg_hss_clear.setStyleSheet(btn_ss)
 
         # ── 3) KALİBRASYON ───────────────────────────────────
         self.cfg_calib_frame = QFrame(self.tab_settings)
-        self.cfg_calib_frame.setGeometry(QRect(342, 28, 340, 460))
+        self.cfg_calib_frame.setGeometry(QRect(RX, 28, RW, 489))
         self.cfg_calib_frame.setStyleSheet(panel_ss)
 
         lbl_calib = QLabel(self.cfg_calib_frame)
-        lbl_calib.setGeometry(QRect(8, 4, 260, 18))
+        lbl_calib.setGeometry(QRect(10, 6, 350, 20))
         lbl_calib.setText("KALİBRASYON (Kamera & Sensör)")
         lbl_calib.setStyleSheet(hdr_ss)
 
         # Kamera ofsetleri
         lbl_cam = QLabel(self.cfg_calib_frame)
-        lbl_cam.setGeometry(QRect(10, 28, 200, 16))
+        lbl_cam.setGeometry(QRect(12, 32, 250, 18))
         lbl_cam.setText("Kamera Ofset:")
         lbl_cam.setStyleSheet("color: white; font-size: 11px; font-weight: bold; background: transparent;")
 
@@ -372,15 +376,15 @@ class Ui_QuanrumUAVArayz(object):
             ("Açı (°):", "cfg_cam_ang", -180, 180, 0),
         ]
         for j, (label_text, attr, mn, mx, default) in enumerate(cam_offsets):
-            y = 48 + j * 40
+            y = 56 + j * 44
 
             lbl = QLabel(self.cfg_calib_frame)
-            lbl.setGeometry(QRect(10, y, 70, 16))
+            lbl.setGeometry(QRect(12, y, 100, 18))
             lbl.setText(label_text)
             lbl.setStyleSheet(lbl_ss)
 
             spin = QSpinBox(self.cfg_calib_frame)
-            spin.setGeometry(QRect(80, y, 100, 24))
+            spin.setGeometry(QRect(120, y, 160, 28))
             spin.setStyleSheet(input_ss)
             spin.setRange(mn, mx)
             spin.setValue(default)
@@ -388,7 +392,7 @@ class Ui_QuanrumUAVArayz(object):
 
         # Sensör ofsetleri
         lbl_sens = QLabel(self.cfg_calib_frame)
-        lbl_sens.setGeometry(QRect(10, 176, 200, 16))
+        lbl_sens.setGeometry(QRect(12, 196, 250, 18))
         lbl_sens.setText("Sensör Ofset:")
         lbl_sens.setStyleSheet("color: white; font-size: 11px; font-weight: bold; background: transparent;")
 
@@ -402,15 +406,15 @@ class Ui_QuanrumUAVArayz(object):
             ("IMU Yaw (°):", "cfg_imu_y",   -10.0, 10.0, 0.0),
         ]
         for k, (label_text, attr, mn, mx, default) in enumerate(sensor_offsets):
-            y = 196 + k * 32
+            y = 220 + k * 34
 
             lbl = QLabel(self.cfg_calib_frame)
-            lbl.setGeometry(QRect(10, y, 100, 16))
+            lbl.setGeometry(QRect(12, y, 130, 18))
             lbl.setText(label_text)
             lbl.setStyleSheet(lbl_ss)
 
             spin = QDoubleSpinBox(self.cfg_calib_frame)
-            spin.setGeometry(QRect(115, y, 100, 24))
+            spin.setGeometry(QRect(150, y, 160, 28))
             spin.setStyleSheet(input_ss)
             spin.setRange(mn, mx)
             spin.setSingleStep(0.01)
@@ -420,12 +424,12 @@ class Ui_QuanrumUAVArayz(object):
 
         # Kalibrasyon butonları
         self.cfg_calib_save = QPushButton(self.cfg_calib_frame)
-        self.cfg_calib_save.setGeometry(QRect(10, 424, 140, 28))
+        self.cfg_calib_save.setGeometry(QRect(12, 462 - 12, 180, 30))
         self.cfg_calib_save.setText("Kaydet & Uygula")
         self.cfg_calib_save.setStyleSheet(save_btn_ss)
 
         self.cfg_calib_reset = QPushButton(self.cfg_calib_frame)
-        self.cfg_calib_reset.setGeometry(QRect(160, 424, 100, 28))
+        self.cfg_calib_reset.setGeometry(QRect(200, 462 - 12, 120, 30))
         self.cfg_calib_reset.setText("Sıfırla")
         self.cfg_calib_reset.setStyleSheet(btn_ss)
 
@@ -677,8 +681,7 @@ class Ui_QuanrumUAVArayz(object):
             ("Enlem",   "dash_enlem"),   ("Boylam",  "dash_boylam"),
             ("İrtifa",  "dash_irtifa"),  ("Dikilme", "dash_dikilme"),
             ("Yönelme", "dash_yonelme"), ("Yatış",   "dash_yatis"),
-            ("Hız",     "dash_hiz"),     ("Batarya", "dash_bat"),
-            ("Saat",    "dash_saat"),
+            ("Hız",     "dash_hiz"),
         ]
         spacing = W // len(telem_items)
         for i, (title, attr) in enumerate(telem_items):
@@ -731,18 +734,17 @@ class Ui_QuanrumUAVArayz(object):
         self.dash_status_frame.setStyleSheet(panel_ss)
 
         status_items = [
-            ("Mod",       "dash_st_mod",   0),
-            ("Batarya",   "dash_st_bat",   108),
-            ("Kilitlenme","dash_st_lock",  216),
-            ("Hız",       "dash_st_spd",   324),
+            ("Mod",        "dash_st_mod",   0),
+            ("Kilitlenme", "dash_st_lock",  210),
         ]
+        item_w = 200
         for label_text, attr, sx in status_items:
             lbl = QLabel(self.dash_status_frame)
-            lbl.setGeometry(QRect(sx + 6, 6, 96, 14))
+            lbl.setGeometry(QRect(sx + 6, 6, item_w, 14))
             lbl.setText(label_text)
             lbl.setStyleSheet("color: #aaa; font-size: 10px; background: transparent; border: none;")
             val = QLabel(self.dash_status_frame)
-            val.setGeometry(QRect(sx + 6, 24, 96, 24))
+            val.setGeometry(QRect(sx + 6, 24, item_w, 26))
             val.setAlignment(Qt.AlignCenter)
             val.setStyleSheet(val_ss)
             val.setText("—")
@@ -750,52 +752,56 @@ class Ui_QuanrumUAVArayz(object):
 
         # Mod değerini öne çıkar
         self.dash_st_mod_val.setStyleSheet(
-            "QLabel { background-color: #00cc44; color: white; font-size: 13px; "
+            "QLabel { background-color: #00cc44; color: white; font-size: 14px; "
             "font-weight: bold; border-radius: 5px; border: none; }")
         self.dash_st_mod_val.setText("OTONOM")
 
-        # Kilitlenme durumu + süre
+        # Manuel mod sayacı (en solda)
+        self.dash_manuel_count = QLabel(self.dash_status_frame)
+        self.dash_manuel_count.setGeometry(QRect(6, 56, 70, 26))
+        self.dash_manuel_count.setAlignment(Qt.AlignCenter)
+        self.dash_manuel_count.setStyleSheet(
+            "background-color: #555; color: #ffcc00; font-size: 12px; "
+            "font-weight: bold; border-radius: 4px; border: 1px solid #777;")
+        self.dash_manuel_count.setText("M: 0")
+
+        # Kilitlenme durumu (ortada)
         self.dash_lock_indicator = QLabel(self.dash_status_frame)
-        self.dash_lock_indicator.setGeometry(QRect(6, 56, 200, 22))
+        self.dash_lock_indicator.setGeometry(QRect(82, 56, 210, 26))
         self.dash_lock_indicator.setAlignment(Qt.AlignCenter)
         self.dash_lock_indicator.setStyleSheet(
-            "background-color: #ccaa00; color: black; font-size: 11px; "
+            "background-color: #ccaa00; color: black; font-size: 12px; "
             "font-weight: bold; border-radius: 4px; border: none;")
         self.dash_lock_indicator.setText("ARANIYOR")
 
+        # Kilitlenme süresi (sağda)
         self.dash_lock_timer = QLabel(self.dash_status_frame)
-        self.dash_lock_timer.setGeometry(QRect(210, 56, 90, 22))
+        self.dash_lock_timer.setGeometry(QRect(298, 56, 100, 26))
         self.dash_lock_timer.setAlignment(Qt.AlignCenter)
         self.dash_lock_timer.setStyleSheet(
             "QLabel { background-color: black; color: #ff4444; "
-            "font-family: 'Courier New', monospace; font-size: 11px; "
+            "font-family: 'Courier New', monospace; font-size: 12px; "
             "font-weight: bold; border-radius: 4px; border: 1px solid #555; }")
         self.dash_lock_timer.setText("0.0s / 4.0s")
 
         self.dash_lock_coord = QLabel(self.dash_status_frame)
-        self.dash_lock_coord.setGeometry(QRect(6, 82, 300, 16))
+        self.dash_lock_coord.setGeometry(QRect(6, 82, 360, 16))
         self.dash_lock_coord.setStyleSheet("color: #aaa; font-size: 10px; background: transparent; border: none;")
         self.dash_lock_coord.setText("")
 
-        # Manuel mod sayacı
-        self.dash_manuel_count = QLabel(self.dash_status_frame)
-        self.dash_manuel_count.setGeometry(QRect(310, 56, 60, 22))
-        self.dash_manuel_count.setAlignment(Qt.AlignCenter)
-        self.dash_manuel_count.setStyleSheet(
-            "background-color: #555; color: #ffcc00; font-size: 11px; "
-            "font-weight: bold; border-radius: 4px; border: 1px solid #777;")
-        self.dash_manuel_count.setText("M: 0")
-
-        # ── KOMUT ÇUBUĞU ─────────────────────────────────────
+        # ── KOMUT ÇUBUĞU + BATARYA / SAAT ────────────────────
         self.dash_cmd_frame = QFrame(self.tab_dashboard)
-        self.dash_cmd_frame.setGeometry(QRect(3, 429, W - 3, 60))
+        self.dash_cmd_frame.setGeometry(QRect(3, 429, W - 3, 90))
         self.dash_cmd_frame.setStyleSheet(f"background-color: {dark}; border: 1px solid #555; border-radius: 4px;")
 
+        # Butonları ortala: 4 buton * 110 genişlik + 3 boşluk * 14 = 482
         btn_names = [("ARM", "dash_btn_arm"), ("DISARM", "dash_btn_disarm"),
                      ("RTL", "dash_btn_rtl"), ("Acil İniş", "dash_btn_emergency")]
+        total_btn_w = len(btn_names) * 110 + (len(btn_names) - 1) * 14
+        btn_start_x = (W - 3 - total_btn_w) // 2
         for k, (text, attr) in enumerate(btn_names):
             btn = QPushButton(self.dash_cmd_frame)
-            btn.setGeometry(QRect(20 + k * 120, 14, 100, 32))
+            btn.setGeometry(QRect(btn_start_x + k * 124, 8, 110, 34))
             btn.setText(text)
             btn.setStyleSheet(btn_ss)
             setattr(self, attr, btn)
@@ -806,6 +812,29 @@ class Ui_QuanrumUAVArayz(object):
             "border: 2px solid #990000; border-radius: 8px; padding: 6px; font-weight: bold; }\n"
             "QPushButton:hover { background-color: #ff0000; }\n"
             "QPushButton:pressed { background-color: #990000; }")
+
+        # Batarya ve Saat — butonların altında, ortalanmış
+        bottom_items = [("Batarya", "dash_bat"), ("Saat", "dash_saat")]
+        item_w = 130
+        gap = 20
+        total_bottom_w = len(bottom_items) * item_w + (len(bottom_items) - 1) * gap
+        bottom_start_x = (W - 3 - total_bottom_w) // 2
+        for j, (title, attr) in enumerate(bottom_items):
+            x = bottom_start_x + j * (item_w + gap)
+            lbl = QLabel(self.dash_cmd_frame)
+            lbl.setGeometry(QRect(x, 48, item_w, 14))
+            lbl.setText(title)
+            lbl.setAlignment(Qt.AlignCenter)
+            lbl.setStyleSheet("color: #aaa; font-size: 10px; background: transparent; border: none;")
+            val = QLabel(self.dash_cmd_frame)
+            val.setGeometry(QRect(x, 62, item_w, 22))
+            val.setAlignment(Qt.AlignCenter)
+            val.setStyleSheet(
+                "QLabel { background-color: black; color: #00ff00; "
+                "font-family: 'Courier New', monospace; font-size: 13px; "
+                "font-weight: bold; border: 1px solid #333; border-radius: 3px; }")
+            val.setText("—")
+            setattr(self, attr + "_val", val)
 
     def retranslateUi(self, QuanrumUAVArayz):
         QuanrumUAVArayz.setWindowTitle(QCoreApplication.translate("QuanrumUAVArayz", u"Quantum UAV Aray\u00fcz", None))
